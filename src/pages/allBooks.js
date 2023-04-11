@@ -37,7 +37,7 @@ export default function allBooks({ data }) {
 
 
             <main className='mt-10 pl-20 pr-20 flex gap-5'>
-                <div className='w-1/5 border flex flex-col gap-5'>
+                <div className='w-1/5 flex flex-col gap-5'>
                     <div>
                         <input type="text" placeholder='Search' className='w-full h-14 border-none rounded-lg bg-[#f8f9fa]' />
                     </div>
@@ -90,8 +90,8 @@ export default function allBooks({ data }) {
                 </div>
 
 
-                <div className='w-4/5 border pt-2 pr-52'>
-                    <div className='flex items-center justify-between'>
+                <div className='w-4/5 pt-2'>
+                    <div className='flex items-center gap-[550px]'>
                         <div className='flex gap-2'>
                             <div className='border rounded-lg p-2 hover:text-[#456c5d] hover:bg-[#e9fbf4] hover:border-[#467060]'>
                                 <BsFillGridFill />
@@ -102,7 +102,7 @@ export default function allBooks({ data }) {
 
                         </div>
                         <div>
-                            <p>Books Available</p>
+                            <p className='text-lg'>Books Available</p>
                         </div>
 
                     </div>

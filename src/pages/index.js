@@ -85,7 +85,7 @@ export default function Home({ data }) {
 
         </div>
 
-        {/* CARD ..................................................... */}
+      {/* CARD ..................................................... */}
         <div className='bg-[#f8f9fa] flex flex-col items-center pb-10'>
           {/* titre */}
           <div className='flex flex-col items-center pt-20 mb-20'>

@@ -16,3 +16,13 @@
 .fullCard:hover .btnFav {
     opacity: 1;
 }
+
+
+
+.fullCard:hover .logo {
+    transform: translateX(0px);
+    z-index: 99;
+    opacity: 1;
+    transition: 0.2s ease-in;
+}
+

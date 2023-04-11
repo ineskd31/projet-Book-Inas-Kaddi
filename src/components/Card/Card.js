@@ -1,13 +1,24 @@
 import React from 'react'
 import { AiFillHeart } from "react-icons/ai";
+import { BsFillBagHeartFill } from "react-icons/bs";
+import { MdZoomOutMap } from "react-icons/md";
 
 
 export default function Card({ element }) {
     return (
-        <div className='fullCard bg-white w-[300px] shadow-lg hover:card-hover transition-all duration-1000 ease-out'>
+        <div className='fullCard bg-white w-[300px] shadow-lg hover:card-hover transition-all duration-1000 ease-out relative overflow-hidden'>
 
             <div className='w-[300px] h-[400px]'>
                 <img className='w-full h-full' src={element.image_url} />
+            </div>
+
+            <div className='flex flex-col gap-2 absolute top-3 right-3  translate-x-12 logo'>
+                <div className='bg-[#5a8f7b] w-fit p-2 rounded-full text-white text-xl'>
+                    <BsFillBagHeartFill/>
+                </div>
+                <div className='bg-[#5a8f7b] w-fit p-2 rounded-full text-xl text-white'>
+                    <MdZoomOutMap/>
+                </div>
             </div>
 
             <div className='cardBas bg-white hover:card-hover transition-all duration-1000 ease-out'>

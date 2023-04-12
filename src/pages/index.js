@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
-import styles from '@/styles/Home.module.css'
 import Nav from '@/components/Nav/Nav'
 import Card from '@/components/Card/Card';
 import Footer from '@/components/Footer/Footer';
 import { useState } from 'react';
+import Modal from '@/components/Modal.js/Modal';
 
 
 
@@ -23,6 +23,9 @@ export default function Home({ data }) {
     }
   }
 
+  const [modal, setModal] = useState(false);
+
+  const closeModal = () => {setModal(false)}
 
   return (
     <>
@@ -85,35 +88,41 @@ export default function Home({ data }) {
 
         </div>
 
-      {/* CARD ..................................................... */}
+        {/* CARD ..................................................... */}
         <div className='bg-[#f8f9fa] flex flex-col items-center pb-10'>
-          {/* titre */}
+          {/* titre .................*/}
           <div className='flex flex-col items-center pt-20 mb-20'>
             <p className=' text-green-600 font-bold tracking-widest'>BOOKS GALLERY</p>
             <p className='op font-semibold text-4xl pb-4'>Popular Books</p>
             <Image src={"/HR.png"} width={250} height={60} />
           </div>
 
-          {/* card */}
+          {/* card .......................*/}
           <div className='pl-40 pr-40 flex flex-wrap gap-10 justify-center pb-20'>
             {popular.map((element, index) => {
               if (index < load) {
                 return (
-                  <Card element={element} />
+                  <Card element={element} setModal={setModal}/>
                 );
               }
             })}
           </div>
 
 
+
+          {/* LOAD MORE................................ */}
           <div onClick={() => more()} class="relative inline-flex px-5 py-3 overflow-hidden group bg-[#5a8f7b] cursor-pointer">
             <span class="w-32 h-32 rotate-45 translate-x-12 -translate-y-2 absolute left-0 top-0"></span>
             <span class="absolute top-0 left-0 w-48 h-48 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-56 -translate-y-24 bg-[#2f4858] opacity-100 group-hover:-translate-x-8"></span>
             <span class="relative w-full text-left text-white transition-colors duration-200 ease-in-out">Load More</span>
             <span class="absolute inset-0"></span>
           </div>
-
         </div>
+
+
+          
+
+      
 
         {/* JOIN .......................................... */}
         <div className='h-[450px] flex flex-col items-center justify-center'>
@@ -145,15 +154,20 @@ export default function Home({ data }) {
                 <FaYoutube className='bg-[#5a8f7b] text-white rounded-full w-8 h-8 p-2 hover:bg-[#2f4858] transition duration-200 ease-out hover:ease-in' />
               </div>
             </div>
+
           </div>
 
         </div>
+
+        <Modal onClose={closeModal} visible={modal}/>
+
 
       </main>
 
       <footer>
         <Footer />
       </footer>
+      
     </>
   )
 }

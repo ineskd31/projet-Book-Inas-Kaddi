@@ -43,15 +43,15 @@ export default function allBooks({ data }) {
                     </div>
                     <div className='flex flex-col gap-1'>
                         <p className='font-bold text-xl'>Category</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit'>All</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit'>Category</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit'>Mystery Thriller</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit'>Fantasy</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit'>Biography</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit'>Music</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit'>Fiction</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit'>Book Title</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit'>Inspirational</p>
+                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>All</p>
+                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Category</p>
+                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Mystery Thriller</p>
+                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Fantasy</p>
+                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Biography</p>
+                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Music</p>
+                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Fiction</p>
+                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Book Title</p>
+                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Inspirational</p>
                     </div>
 
                     <div>
@@ -93,10 +93,10 @@ export default function allBooks({ data }) {
                 <div className='w-4/5 pt-2'>
                     <div className='flex items-center gap-[550px]'>
                         <div className='flex gap-2'>
-                            <div className='border rounded-lg p-2 hover:text-[#456c5d] hover:bg-[#e9fbf4] hover:border-[#467060]'>
+                            <div className='border rounded-lg p-2 hover:text-[#456c5d] hover:bg-[#e9fbf4] hover:border-[#467060] cursor-pointer'>
                                 <BsFillGridFill />
                             </div>
-                            <div className='border rounded-lg p-2 hover:text-[#456c5d] hover:bg-[#e9fbf4] hover:border-[#467060]'>
+                            <div className='border rounded-lg p-2 hover:text-[#456c5d] hover:bg-[#e9fbf4] hover:border-[#467060] cursor-pointer'>
                                 <HiViewList />
                             </div>
 

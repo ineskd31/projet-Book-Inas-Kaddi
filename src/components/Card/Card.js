@@ -5,28 +5,31 @@ import { BsFillBagHeartFill } from "react-icons/bs";
 import { MdZoomOutMap } from "react-icons/md";
 
 
-export default function Card({ element }) {
+
+export default function Card({ element, setModal }) {
     return (
         <div className='fullCard bg-white w-[300px] shadow-lg hover:card-hover transition-all duration-1000 ease-out relative overflow-hidden'>
-        {/* IMG */}
-            <div className='w-[300px] h-[400px]'>
-                <img className='w-full h-full' src={element.image_url} />
-            </div>
+            {/* IMG */}
+            <Link href={`/${element.title ? element.title : ""}`}>
+                <div className='w-[300px] h-[400px]'>
+                    <img className='w-full h-full' src={element.image_url} />
+                </div>
+            </Link>
 
-        {/* 2 LOGOS */}
+
+            {/* 2 LOGOS */}
             <div className='flex flex-col gap-2 absolute top-3 right-3  translate-x-12 logo'>
                 <div className='bg-[#5a8f7b] w-fit p-2 rounded-full text-white text-xl'>
-                    <BsFillBagHeartFill/>
+                    <BsFillBagHeartFill />
                 </div>
-                <Link href={"/info"}>
-                    <div className='bg-[#5a8f7b] w-fit p-2 rounded-full text-xl text-white'>
-                    <MdZoomOutMap/>
+                <div onClick={() => { setModal(true) }} className='bg-[#5a8f7b] w-fit p-2 rounded-full text-xl text-white'>
+                    <MdZoomOutMap />
                 </div>
-                </Link>
-                
+
+
             </div>
 
-        {/* TEXT */}
+            {/* TEXT */}
             <div className='cardBas bg-white hover:card-hover transition-all duration-1000 ease-out'>
                 <div className='p-4 flex flex-col gap-5 rounded-lg h-40'>
                     <p className='op text-blue-900 text-xl font-bold'>{element.title}</p>
@@ -34,7 +37,7 @@ export default function Card({ element }) {
                     <p>{element.Quote1}</p>
                 </div>
 
-             {/* BUTTON FAV */}
+                {/* BUTTON FAV */}
                 <div className='btnFav text-center opacity-0 mt-8'>
                     <div class="relative inline-flex px-5 py-3 overflow-hidden group bg-[#5a8f7b] items-center gap-2">
 
@@ -46,7 +49,6 @@ export default function Card({ element }) {
                     </div>
                 </div>
             </div>
-
 
 
         </div>

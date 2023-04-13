@@ -43,6 +43,24 @@ export default function allBooks({ data }) {
         data.sort(nordre);
     }
 
+    const [catego, setCatego] = useState("All");
+
+    const categoriesTab = [
+        "All",
+        "Animals",
+        "Biography",
+        "Classics",
+        "Fantasy",
+        "Fiction",
+        "Historical",
+        "Horror",
+        "Inspirational",
+        "Paranormal",
+        "Romance",
+        "Science Fiction",
+        "War",
+        "Young Adult"
+    ];
 
 
     return (
@@ -80,16 +98,13 @@ export default function allBooks({ data }) {
                     </div>
                     <div className='flex flex-col gap-1'>
                         <p className='font-bold text-xl'>Category</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>All</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Category</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Mystery Thriller</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Fantasy</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Biography</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Music</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Fiction</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Book Title</p>
-                        <p className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>Inspirational</p>
+                        {categoriesTab.map((element) => {
+                                return(
+                                    <p onClick={() => {setCatego(element)}} className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>{element}</p>
+                                )
+                        })}
                     </div>
+                    
 
                     <div>
                         <p className='font-bold text-xl mb-2'>Author</p>
@@ -137,7 +152,50 @@ export default function allBooks({ data }) {
 
 
                     <div className='flex flex-wrap gap-8 mt-10 justify-center mb-10'>
-                        {data
+                        {catego == "All" ?
+                            data
+                                .filter(book => {
+                                    return (
+                                        search === "" ? book :
+                                            book.title ?
+                                                book.title.toLowerCase().includes(search.toLowerCase())
+                                                : ""
+                                    )
+                                })
+                                .map((element) => {
+                                    return (
+                                        format === true ?
+                                            <Card element={element} />
+                                            : <CardLong element={element} />
+                                    )
+                                })
+
+                            :
+
+                            data
+                                .filter((item) => {
+                                    return (
+                                        item.genres ?
+                                            item.genres.includes(catego)
+                                            : ""
+                                    )
+                                })
+                                .filter(item => {
+                                    return (
+                                        search === "" ? item :
+                                            item.title ?
+                                                item.title.toLowerCase().includes(search.toLowerCase())
+                                                : ""
+                                    )
+                                })
+                                .map((element) => {
+                                    return (
+                                        format === true ?
+                                            <Card element={element} />
+                                            : <CardLong element={element} />
+                                    )
+                                })}
+                        {/* {data
                             .filter(item => {
                                 return (
                                     search === "" ? item :
@@ -148,7 +206,7 @@ export default function allBooks({ data }) {
                                 return (
                                     format ? <Card element={element} /> : <CardLong element={element} />
                                 )
-                            })}
+                            })} */}
                     </div>
 
                 </div>
@@ -162,6 +220,7 @@ export default function allBooks({ data }) {
 export async function getStaticProps() {
     const response = await fetch("https://example-data.draftbit.com/books")
     const data = await response.json()
+
 
     return {
         props: {

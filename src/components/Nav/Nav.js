@@ -4,7 +4,7 @@ import { BiPhoneCall, BiHeart } from "react-icons/bi";
 import { HiBars3CenterLeft } from "react-icons/hi2";
 import Link from 'next/link';
 import Favorit from '../Favorit/Favorit';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 
@@ -14,9 +14,23 @@ export default function Nav({ setSearch, search }) {
 
     const [open, setOpen] = useState(true);
 
+    const [fix, setFix] = useState(false);
+
+    const fixed = () => {
+        if (window.scrollY >= 200) {
+            setFix(true)
+        } else {
+            setFix(false)
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', fixed);
+    }, []);
+
 
     return (
-        <nav className='bg-white flex justify-between p-4 shadow-lg pl-10 pr-10'>
+        <nav className={fix === true ? 'bg-white flex justify-between p-4 shadow-lg pl-10 pr-10 fixed w-full z-[100] md:pl-5 md:pr-5 ' : 'bg-white flex justify-between p-4 shadow-lg pl-10 pr-10 md:pl-2 md:pr-2'}>
 
             {/* <!-- drawer init and show --> */}
             <div className="text-center flex items-center">
@@ -58,10 +72,13 @@ export default function Nav({ setSearch, search }) {
 
                         </div>
                         <div>
-                            <a href="" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 w-fit">
-                                <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd"></path></svg>
-                                <span className="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
-                            </a>
+                            <Link href={"/sign"}>
+                                <p className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 w-fit">
+                                    <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd"></path></svg>
+                                    <span className="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
+                                </p>
+                            </Link>
+
                         </div>
                     </div>
                 </div>
@@ -70,7 +87,7 @@ export default function Nav({ setSearch, search }) {
 
 
 
-            <div className='flex items-center gap-4 bg-gray-100 p-3 w-[700px] rounded-lg focus-within:border-2 focus-within:border-black '>
+            <div className='flex items-center gap-4 bg-gray-100 p-3 w-[700px] rounded-lg focus-within:border-2 focus-within:border-black lg:w-[500px] md:w-[300px]'>
                 <BsSearch />
                 <input value={search} onChange={(e) => { setSearch(e.target.value) }} className='bg-gray-100 pl-2 w-full border-none' type="text" placeholder='Search your book here' />
             </div>
@@ -81,11 +98,11 @@ export default function Nav({ setSearch, search }) {
                     <p>+01234567890</p>
                 </div>
 
-                <div onClick={() => {setOpen(false)}}>
+                <div onClick={() => { setOpen(false) }}>
                     <BiHeart />
                 </div>
             </div>
-            <Favorit open={open} setOpen={setOpen}/>
+            <Favorit open={open} setOpen={setOpen} />
         </nav>
     )
 }

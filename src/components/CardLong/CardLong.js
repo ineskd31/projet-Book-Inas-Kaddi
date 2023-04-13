@@ -23,7 +23,7 @@ export default function CardLong({ element }) {
                     <p>By: <span className='font-semibold'>{element.authors}</span> </p>
 
                     <div className='mt-8'>
-                        <div onClick={() => {dispatch(ajouterFavori(element))}} class="relative inline-flex px-5 py-3 overflow-hidden group bg-[#5a8f7b] items-center gap-2">
+                        <div onClick={() => {log === true ? dispatch(ajouterFavori(element)) : alert("You have to log in.")}} class="relative inline-flex px-5 py-3 overflow-hidden group bg-[#5a8f7b] items-center gap-2">
 
                             <span class="w-32 h-32 rotate-45 translate-x-12 -translate-y-2 absolute left-0 top-0"></span>
                             <span class="absolute top-0 left-0 w-48 h-48 -mt-1 transition-all duration-500 ease-in-out rotate-45 -translate-x-56 -translate-y-24 bg-[#2f4858] opacity-100 group-hover:-translate-x-8"></span>

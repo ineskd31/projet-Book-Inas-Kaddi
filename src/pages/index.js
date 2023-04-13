@@ -58,17 +58,15 @@ export default function Home({ data }) {
 
 
         {/* SECTION 1 .......................................... */}
-        <div className='flex justify-center items-center gap-8 h-[350px]'>
+        <div className='flex justify-center items-center gap-8 h-[350px] lg:gap-3 lg:ml-5 lg:mr-5 md:gap-3 md:ml-2 md:mr-2 '>
 
-          <div className='flex shadow-lg rounded-lg'>
+          <div className='flex shadow-lg rounded-lg '>
             <div className='overflow-hidden'>
               <div className='hover:scale-110 transition-all duration-500 cursor-pointer'>
                 <Image className='rounded' src={"/book1.jpg"} width={330} height={220} />
               </div>
             </div>
-
-
-            <div className='flex flex-col justify-center gap-4 w-[350px] pl-12 text-xl'>
+            <div className='flex flex-col justify-center gap-4 w-[350px] pl-12 text-xl lg:text-lg lg:gap-2 lg:pl-8 lg:w-[300px] md:text-lg md:gap-2 md:pl-5'>
               <p className='text-green-600 font-bold'>Sale up to 15%</p>
               <p className='font-bold op'>Innovation in Education <br />(Hardcover)</p>
               <p>Starting at: <span className='text-green-600'>$65.09</span></p>
@@ -84,7 +82,7 @@ export default function Home({ data }) {
             </div>
 
 
-            <div className='flex flex-col justify-center gap-4 w-[350px] pl-12 text-xl'>
+            <div className='flex flex-col justify-center gap-4 w-[350px] pl-12 text-xl lg:text-lg lg:gap-2 lg:pl-8 lg:w-[300px] md:text-lg md:gap-2 md:pl-5'>
               <p className='text-green-600 font-bold'>Sale up to 10%</p>
               <p className='font-bold op'>Innovation in Education <br /> (Hardcover)</p>
               <p>Starting at: <span className='text-green-600'>$50.09</span></p>
@@ -182,7 +180,6 @@ export default function Home({ data }) {
     </>
   )
 }
-
 
 
 

@@ -1,11 +1,22 @@
 import Footer from '@/components/Footer/Footer'
 import Nav from '@/components/Nav/Nav'
+import { setLog } from '@/features/logSlice';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react'
 import { AiOutlineGooglePlus } from "react-icons/ai";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function login() {
+
+    const log = useSelector((state) => state.log.value)
+
+    const dispatch = useDispatch()
+
+    const router = useRouter()
+
+
     return (
         <div>
             <Nav />
@@ -24,9 +35,9 @@ export default function login() {
                         <p className='ml-3 mr-3 text-gray-400'>OR</p>
                         <hr className='w-full'/>
                     </div>
-                    <form className='flex flex-col items-center gap-3'>
-                        <input type="text" placeholder='Email' className='rounded-xl w-80' />
-                        <input type="text" placeholder='Password' className='rounded-xl w-80' />
+                    <form className='flex flex-col items-center gap-3' onSubmit={(e) => {e.preventDefault() ; dispatch(setLog()); router.push("/")}}>
+                        <input type="text" placeholder='Username' className='rounded-xl w-80' />
+                        <input type="password" placeholder='Password' className='rounded-xl w-80' />
                         <button type='submit' className='p-2 border text-white w-40 rounded-2xl bg-[#5a8f7b] hover:bg-[#42695a]'>Sign in</button>
                     </form>
                 </div>

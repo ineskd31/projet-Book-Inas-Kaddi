@@ -6,7 +6,7 @@ import { BsStack } from "react-icons/bs";
 
 export default function Footer() {
     return (
-        <div className='bg-[#2f4858] text-white pl-60 pr-60'>
+        <div className='bg-[#2f4858] text-white pl-60 pr-60 lg:pl-20 lg:pr-20 md:pl-10 md:pr-10'>
         
             <div className='flex gap-52 pt-16 pb-16'>
                 <div className='flex gap-8'>

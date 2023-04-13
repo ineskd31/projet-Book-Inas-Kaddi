@@ -3,22 +3,22 @@ import { AiFillHeart } from "react-icons/ai";
 
 
 
-export default function CardLong({ data }) {
+export default function CardLong({ element }) {
 
     return (
-        <div>
-            <p>CARD2</p>
+        <div className='w-full'>
 
-            <div className='flex'>
-                <div>
-                    <img className='w-full h-full' src={data[0].image_url} />
+            <div className='flex border shadow-lg p-5 rounded-lg'>
+                <div className=' pr-20 pl-20'>
+                    <img className='w-[250px]' src={element.image_url} />
                 </div>
-                <div className=''>
-                    <p>Book Title</p>
-                    <p>Quote</p>
-                    <p>By: Author</p>
+                <div className='flex flex-col gap-2 w-full p-5'>
+                    <p className='op text-2xl font-semibold'>{element.title}</p>
+                    <p>{element.Quote1}</p>
+                    <p>{element.Quote2}</p>
+                    <p>By: <span className='font-semibold'>{element.authors}</span> </p>
 
-                    <div className='btnFav text-center opacity-0 mt-8'>
+                    <div className='mt-8'>
                         <div class="relative inline-flex px-5 py-3 overflow-hidden group bg-[#5a8f7b] items-center gap-2">
 
                             <span class="w-32 h-32 rotate-45 translate-x-12 -translate-y-2 absolute left-0 top-0"></span>

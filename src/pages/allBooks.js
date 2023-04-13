@@ -13,6 +13,38 @@ export default function allBooks({ data }) {
 
     const [search, setSearch] = useState("");
 
+    const [format, setFormat] = useState(true);
+
+    const [alpha, setAlpha] = useState(true);
+
+    function ordre(a, b) {
+        if (a.title < b.title) {
+            return -1;
+        }
+        if (a.title > b.title) {
+            return 1;
+        }
+        return 0;
+    }
+
+    function nordre(a, b) {
+        if (a.title < b.title) {
+            return 1;
+        }
+        if (a.title > b.title) {
+            return -1;
+        }
+        return 0;
+    }
+
+    if (alpha) {
+        data.sort(ordre);
+    } else {
+        data.sort(nordre);
+    }
+
+
+
     return (
         <div>
             <nav className='flex justify-between p-4 shadow-lg pl-10 pr-10'>
@@ -75,15 +107,15 @@ export default function allBooks({ data }) {
                     </div>
                 </div>
 
-                
+
 
                 <div className='w-4/5 pt-2'>
                     <div className='flex items-center justify-between'>
                         <div className='flex gap-2'>
-                            <div className='border rounded-lg p-2 hover:text-[#456c5d] hover:bg-[#e9fbf4] hover:border-[#467060] cursor-pointer'>
+                            <div onClick={() => { setFormat(true) }} className='border rounded-lg p-2 hover:text-[#456c5d] hover:bg-[#e9fbf4] hover:border-[#467060] cursor-pointer'>
                                 <BsFillGridFill />
                             </div>
-                            <div className='border rounded-lg p-2 hover:text-[#456c5d] hover:bg-[#e9fbf4] hover:border-[#467060] cursor-pointer'>
+                            <div onClick={() => { setFormat(false) }} className='border rounded-lg p-2 hover:text-[#456c5d] hover:bg-[#e9fbf4] hover:border-[#467060] cursor-pointer'>
                                 <HiViewList />
                             </div>
 
@@ -92,19 +124,19 @@ export default function allBooks({ data }) {
                             <p className='text-lg'>Books Available</p>
                         </div>
 
+
                         <div>
                             <select className='bg-gray-200 rounded-lg pl-1  shadow-lg w-full' name="cars" id="cars">
-                                <option value="A-Z">A - Z</option>
-                                <option value="Z-A">Z - A</option>
+                                <option onClick={() => {setAlpha(true)}} value="A-Z">A - Z</option>
+                                <option onClick={() => {setAlpha(false)}} value="Z-A">Z - A</option>
                             </select>
                         </div>
 
 
                     </div>
-                    
-                    <CardLong data={data}/>
 
-                    <div className='flex flex-wrap gap-8 mt-10 justify-center'>
+
+                    <div className='flex flex-wrap gap-8 mt-10 justify-center mb-10'>
                         {data
                             .filter(item => {
                                 return (
@@ -114,16 +146,15 @@ export default function allBooks({ data }) {
                             })
                             .map((element) => {
                                 return (
-                                    <Card element={element} />
+                                    format ? <Card element={element} /> : <CardLong element={element} />
                                 )
                             })}
                     </div>
 
                 </div>
             </main>
-            <CardLong data={data}/>
 
-            <Footer/>
+            <Footer />
         </div>
     )
 }

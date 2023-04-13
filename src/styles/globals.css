@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.op{
+.op {
     font-family: 'Philosopher', sans-serif;
 }
 
@@ -25,4 +25,5 @@
     opacity: 1;
     transition: 0.2s ease-in;
 }
+
 

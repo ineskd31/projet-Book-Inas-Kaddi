@@ -5,9 +5,14 @@ import { HiBars3CenterLeft } from "react-icons/hi2";
 import { HiViewList } from "react-icons/hi";
 import Link from 'next/link';
 import Card from '@/components/Card/Card';
+import { useState } from 'react';
+import CardLong from '@/components/CardLong/CardLong'
+import Footer from '@/components/Footer/Footer';
 
 export default function allBooks({ data }) {
-    console.log(data);
+
+    const [search, setSearch] = useState("");
+
     return (
         <div>
             <nav className='flex justify-between p-4 shadow-lg pl-10 pr-10'>
@@ -17,7 +22,7 @@ export default function allBooks({ data }) {
                         <HiBars3CenterLeft className='text-3xl' />
                     </button>
                     <Link href={"/"}>
-                        <p className='text-2xl op '>BOOKSHELF.</p>
+                        <p className='text-2xl op'>BOOKSHELF.</p>
                     </Link>
 
                 </div>
@@ -39,7 +44,7 @@ export default function allBooks({ data }) {
             <main className='mt-10 pl-20 pr-20 flex gap-5'>
                 <div className='w-1/5 flex flex-col gap-5'>
                     <div>
-                        <input type="text" placeholder='Search' className='w-full h-14 border-none rounded-lg bg-[#f8f9fa]' />
+                        <input value={search} onChange={(e) => { setSearch(e.target.value) }} type="text" placeholder='Search' className='w-full h-14 border-none rounded-lg bg-[#f8f9fa]' />
                     </div>
                     <div className='flex flex-col gap-1'>
                         <p className='font-bold text-xl'>Category</p>
@@ -55,43 +60,25 @@ export default function allBooks({ data }) {
                     </div>
 
                     <div>
-                        <p className='font-bold text-xl'>Author</p>
+                        <p className='font-bold text-xl mb-2'>Author</p>
                         <div>
-                            <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" className="bg-gray-200 hover:bg-gray-300 focus:outline-none font-medium rounded-lg text-sm w-full h-10 pl-2 text-center inline-flex items-center" type="button">All <svg className="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-
-                            {/* <!-- Dropdown menu --> */}
-                            <div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Book Description</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Baran Bo Odar</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Shakib</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Angelina Aludo</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Daniel Diaz</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Fahad</a>
-                                    </li>
-                                </ul>
-                            </div>
-
+                            <select className='bg-gray-200 rounded-lg pl-1 w-full shadow-lg' name="cars" id="cars">
+                                <option value="All">All</option>
+                                <option value="Book Description">Book Description</option>
+                                <option value="Baran Bo Odar">Baran Bo Odar</option>
+                                <option value="Shakib">Shakib</option>
+                                <option value="Angelina Aludo">Angelina Aludo</option>
+                                <option value="Daniel Diaz">Daniel Diaz</option>
+                                <option value="Fahad">Fahad</option>
+                            </select>
                         </div>
                     </div>
-
-
                 </div>
 
+                
 
                 <div className='w-4/5 pt-2'>
-                    <div className='flex items-center gap-[550px]'>
+                    <div className='flex items-center justify-between'>
                         <div className='flex gap-2'>
                             <div className='border rounded-lg p-2 hover:text-[#456c5d] hover:bg-[#e9fbf4] hover:border-[#467060] cursor-pointer'>
                                 <BsFillGridFill />
@@ -105,19 +92,38 @@ export default function allBooks({ data }) {
                             <p className='text-lg'>Books Available</p>
                         </div>
 
+                        <div>
+                            <select className='bg-gray-200 rounded-lg pl-1  shadow-lg w-full' name="cars" id="cars">
+                                <option value="A-Z">A - Z</option>
+                                <option value="Z-A">Z - A</option>
+                            </select>
+                        </div>
+
+
                     </div>
+                    
+                    <CardLong data={data}/>
 
                     <div className='flex flex-wrap gap-8 mt-10 justify-center'>
-                        {data.map((element) => {
-                            return (
-                                <Card element={element} />
-                            )
-                        })}
+                        {data
+                            .filter(item => {
+                                return (
+                                    search === "" ? item :
+                                        item.title ? item.title.toLowerCase().includes(search.toLowerCase()) : ""
+                                )
+                            })
+                            .map((element) => {
+                                return (
+                                    <Card element={element} />
+                                )
+                            })}
                     </div>
 
                 </div>
             </main>
+            <CardLong data={data}/>
 
+            <Footer/>
         </div>
     )
 }

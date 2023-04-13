@@ -1,12 +1,46 @@
 import Footer from '@/components/Footer/Footer'
 import Nav from '@/components/Nav/Nav'
 import React from 'react'
+import { useEffect, useState } from 'react'
 
 
 
 
 
-export default function info({infoTot}) {
+export default function info({ infoTot }) {
+
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 2000)
+    }, [])
+
+    if (loading) {
+        return (
+            <div className='flex h-screen w-screen justify-center items-center'>
+                <div class="loader">
+                    <div class="cell d-0"></div>
+                    <div class="cell d-1"></div>
+                    <div class="cell d-2"></div>
+
+                    <div class="cell d-1"></div>
+                    <div class="cell d-2"></div>
+
+
+                    <div class="cell d-2"></div>
+                    <div class="cell d-3"></div>
+
+
+                    <div class="cell d-3"></div>
+                    <div class="cell d-4"></div>
+
+
+                </div>
+            </div>
+        )
+    }
 
     console.log(infoTot);
     return (
@@ -75,8 +109,8 @@ export async function getStaticPaths() {
 
 
     const paths = data.filter(item => item.title).map((item) => (
-        {params: { info: item.title }}
-        ))
+        { params: { info: item.title } }
+    ))
 
     return {
         paths,

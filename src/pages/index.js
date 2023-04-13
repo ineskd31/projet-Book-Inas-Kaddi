@@ -52,7 +52,7 @@ export default function Home({ data }) {
 
 
         {/* CAROUSEL .............................................. */}
-        <div className='bg-[#f8f9fa]'>
+        <div className='bg-[#f8f9fa] h-96'>
           <p>CAROUSEL</p>
         </div>
 

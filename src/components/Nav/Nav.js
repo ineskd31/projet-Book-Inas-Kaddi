@@ -30,7 +30,7 @@ export default function Nav({ setSearch, search }) {
 
 
     return (
-        <nav className={fix === true ? 'bg-white flex justify-between p-4 shadow-lg pl-10 pr-10 fixed w-full z-[100] md:pl-5 md:pr-5 ' : 'bg-white flex justify-between p-4 shadow-lg pl-10 pr-10 md:pl-2 md:pr-2'}>
+        <nav className={fix === true ? 'bg-white flex justify-between p-4 shadow-lg pl-10 pr-10 fixed w-full z-[100] md:pl-5 md:pr-5 top-0' : 'bg-white flex justify-between p-4 shadow-lg pl-10 pr-10 md:pl-2 md:pr-2'}>
 
             {/* <!-- drawer init and show --> */}
             <div className="text-center flex items-center">

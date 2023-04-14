@@ -6,8 +6,7 @@ import Card from '@/components/Card/Card';
 import Footer from '@/components/Footer/Footer';
 import { useState } from 'react';
 import Modal from '@/components/Modal.js/Modal';
-
-
+import Carousel from './../components/Carousel/Carousel'
 
 
 
@@ -52,8 +51,8 @@ export default function Home({ data }) {
 
 
         {/* CAROUSEL .............................................. */}
-        <div className='bg-[#f8f9fa] h-96'>
-          <p>CAROUSEL</p>
+        <div className='bg-[#f8f9fa]'>
+          <Carousel/>
         </div>
 
 

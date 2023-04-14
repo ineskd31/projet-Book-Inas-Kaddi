@@ -5,9 +5,11 @@ import { HiBars3CenterLeft } from "react-icons/hi2";
 import { HiViewList } from "react-icons/hi";
 import Link from 'next/link';
 import Card from '@/components/Card/Card';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CardLong from '@/components/CardLong/CardLong'
 import Footer from '@/components/Footer/Footer';
+import { FiChevronDown } from "react-icons/fi";
+import styles from "../styles/AllBooks.module.css"
 
 export default function allBooks({ data }) {
 
@@ -16,6 +18,10 @@ export default function allBooks({ data }) {
     const [format, setFormat] = useState(true);
 
     const [alpha, setAlpha] = useState(true);
+
+    const [displayDropOrder, setDisplayDropOrder] = useState(false);
+
+    const [orderSelected, setOrderSelected] = useState("a - z");
 
     function ordre(a, b) {
         if (a.title < b.title) {
@@ -99,16 +105,16 @@ export default function allBooks({ data }) {
                     <div className='flex flex-col gap-1'>
                         <p className='font-bold text-xl'>Category</p>
                         {categoriesTab.map((element) => {
-                                return(
-                                    <p onClick={() => {setCatego(element)}} className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>{element}</p>
-                                )
+                            return (
+                                <p onClick={() => { setCatego(element) }} className='hover:text-[#5a8f7b] hover:underline w-fit cursor-pointer'>{element}</p>
+                            )
                         })}
                     </div>
-                    
+
 
                     <div>
                         <p className='font-bold text-xl mb-2'>Author</p>
-                        <div>
+                        {/* <div>
                             <select className='bg-gray-200 rounded-lg pl-1 w-full shadow-lg' name="cars" id="cars">
                                 <option value="All">All</option>
                                 <option value="Book Description">Book Description</option>
@@ -118,7 +124,8 @@ export default function allBooks({ data }) {
                                 <option value="Daniel Diaz">Daniel Diaz</option>
                                 <option value="Fahad">Fahad</option>
                             </select>
-                        </div>
+                        </div> */}
+                        <p>BOUTON AUTHORS</p>
                     </div>
                 </div>
 
@@ -136,15 +143,31 @@ export default function allBooks({ data }) {
 
                         </div>
                         <div>
-                            <p className='text-lg'>Books Available</p>
+                            <p className='text-lg'>{data.filter(book => {
+                                    return (
+                                        search === "" ? book :
+                                            book.title ?
+                                                book.title.toLowerCase().includes(search.toLowerCase())
+                                                : ""
+                                    )
+                                }).length} &nbsp; Books Available</p>
                         </div>
 
 
                         <div>
-                            <select className='bg-gray-200 rounded-lg pl-1  shadow-lg w-full' name="cars" id="cars">
+                            <div className={styles.rightTop}>
+                                <p onClick={() => { setDisplayDropOrder(true) }}>{orderSelected}</p>
+                                <FiChevronDown />
+
+                                <div className={displayDropOrder === false ? `${styles.dropOrderContent} ${styles.dNone}` : `${styles.dropOrderContent} ${styles.dBlock}`}>
+                                    <p className={orderSelected == "a - z" ? `${styles.dropAuthPActive}` : ""} onClick={() => { setOrderSelected("a - z"); setAlpha(true); setDisplayDropOrder(false); }}>(a - z)</p>
+                                    <p className={orderSelected == "z - a" ? `${styles.dropAuthPActive}` : ""} onClick={() => { setOrderSelected("z - a"); setAlpha(false); setDisplayDropOrder(false); }}>(z - a)</p>
+                                </div>
+                            </div>
+                            {/* <select className='bg-gray-200 rounded-lg pl-1  shadow-lg w-full' name="cars" id="cars">
                                 <option onClick={() => {setAlpha(true)}} value="A-Z">A - Z</option>
                                 <option onClick={() => {setAlpha(false)}} value="Z-A">Z - A</option>
-                            </select>
+                            </select> */}
                         </div>
 
 
@@ -195,18 +218,6 @@ export default function allBooks({ data }) {
                                             : <CardLong element={element} />
                                     )
                                 })}
-                        {/* {data
-                            .filter(item => {
-                                return (
-                                    search === "" ? item :
-                                        item.title ? item.title.toLowerCase().includes(search.toLowerCase()) : ""
-                                )
-                            })
-                            .map((element) => {
-                                return (
-                                    format ? <Card element={element} /> : <CardLong element={element} />
-                                )
-                            })} */}
                     </div>
 
                 </div>

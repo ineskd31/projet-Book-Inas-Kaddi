@@ -1,0 +1,454 @@
+.carouselContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f6f8fa;
+    height: 43.75em;
+    padding: 0em 5em;
+    position: relative;
+    padding-left: 200px;
+}
+
+.leftCarousel {
+    display: flex;
+    margin-left: 1.25rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: start;
+    width: 50%;
+    gap: 2rem;
+}
+
+.leftCarouselTop {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.divInvest {
+    font-size: 1.15rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    color: #518d74;
+}
+
+.divFriend {
+    font-size: 3.7rem;
+    line-height: 1.2;
+    font-weight: 700;
+    font-family: 'Pilosopher';
+    color: #293e4c;
+}
+
+.leftCarouselLorem {
+    font-size: 1.3rem;
+    line-height: 2rem;
+    color: #696d72;
+}
+
+.carouBtn {
+    padding: 0.75rem 2.3rem;
+    margin-top: 1em;
+    color: #ffffff;
+    font-size: 1.2rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    border-radius: 0.2rem;
+    border: transparent;
+    cursor: pointer;
+}
+
+.carouBtn button {
+    background: linear-gradient(45deg, #20352c 50%, #4e836d 50%);
+    background-size: 250% 100%;
+    background-position: bottom right;
+    transition: all .3s ease-in-out;
+}
+
+.carouBtn button:hover {
+    background-position: left;
+}
+
+
+.rightCarousel {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    width: 50%;
+    padding-right: 6em;
+}
+
+.divImgCarou img {
+    height: 34.4em;
+}
+
+.texture {
+    position: absolute;
+    z-index: 0;
+    height: 34.4em;
+    width: 21.88em;
+    top: 7.2em;
+    right: 7.8em;
+    border: 3px dotted #4e836d;
+    border-radius: 10px;
+    transition: 0.3s ease-out;
+}
+
+
+/* ------- ARROWS --------- */
+.arrow {
+    color: #ffffff;
+    width: 1em;
+    height: 1em;
+    display: flex;
+    justify-content: center;
+    background-color: #4e836d;
+    border-radius: 50%;
+    font-size: 2.3em;
+    padding: 0.2rem;
+    padding-bottom: 1em;
+    padding-right: 0.15em;
+    position: absolute;
+    top: 8em;
+    top: 50%;
+    left: 0.5em;
+    z-index: 20;
+    opacity: 0.3;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.arrowNext {
+    color: #ffffff;
+    width: 1em;
+    height: 1em;
+    display: flex;
+    justify-content: center;
+    background-color: #4e836d;
+    border-radius: 50%;
+    font-size: 2.3em;
+    padding: 0.2rem;
+    padding-bottom: 1em;
+    padding-left: 0.15em;
+    position: absolute;
+    top: 8.5em;
+    top: 50%;
+    right: 0.5em;
+    z-index: 20;
+    opacity: 0.3;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.arrow:hover,
+.arrowNext:hover {
+    opacity: 1;
+}
+
+
+/* ----- INDICATORS ----- */
+.vert {
+    color: #4e836d;
+    border-radius: 50%;
+    background-color: #4e836d;
+    z-index: 20;
+    opacity: 0.3;
+    font-size: 0.5em;
+    margin-right: 0.8em;
+    cursor: pointer;
+}
+
+.active {
+    color: #4e836d;
+    border-radius: 20px;
+    background-color: #4e836d;
+    z-index: 20;
+    padding-right: 2.5em;
+    margin-right: 0.5em;
+    font-size: 0.5em;
+    transition: .2s;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------- Media Querries ----------------------*/
+/*----- MOBILE M ----*/
+@media screen and (max-width: 400px) {
+    .carouselContainer {
+        height: 30em;
+        padding: 0em;
+    }
+
+    .leftCarousel {
+        display: none;
+    }
+
+    .rightCarousel {
+        width: 15em;
+        height: 25.5em;
+        padding-right: 0em;
+    }
+
+    .divImgCarou img {
+        width: 15em;
+        height: 25.5em;
+        object-fit: contain;
+    }
+
+    .texture {
+        width: 14.5em;
+        height: 21em;
+        top: 5.8em;
+        right: 2.9em;
+    }
+
+    /* ------- ARROWS --------- */
+    .arrow {
+        font-size: 2em;
+        left: 0.2em;
+    }
+
+    .arrowNext {
+        font-size: 2em;
+        right: 0.2em;
+    }
+
+    /* ----- INDICATORS ----- */
+    .vert {
+        font-size: 0.4em;
+    }
+
+    .active {
+        font-size: 0.4em;
+    }
+}
+
+
+
+
+
+/*----- MOBILE L ----*/
+@media screen and (max-width: 600px) and (min-width: 400px) {
+    .carouselContainer {
+        padding: 0em;
+        flex-direction: column;
+        height: 47em;
+    }
+
+    .leftCarousel {
+        margin-left: 0rem;
+        align-items: center;
+        width: 100%;
+        padding: 1em;
+        padding-top: 0em;
+        padding-bottom: 0.5em;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .divInvest {
+        font-size: 0.95rem;
+        line-height: 1.5rem;
+    }
+
+    .divFriend {
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+
+    .leftCarouselLorem {
+        font-size: 0.8rem;
+        line-height: 1.5rem;
+    }
+
+    .carouBtn {
+        padding: 0.8rem 2rem;
+        margin-top: 0.5em;
+        font-size: 0.9rem;
+        line-height: 1rem;
+    }
+
+    .rightCarousel {
+        width: 15em;
+        height: 25.5em;
+        padding-right: 0em;
+    }
+
+    .divImgCarou img {
+        width: 15em;
+        height: 25.5em;
+        object-fit: cover;
+        object-fit: contain;
+    }
+
+    .texture {
+        width: 14.5em;
+        height: 21em;
+        top: 22.5em;
+        right: 4.3em;
+    }
+
+    /* ------- ARROWS --------- */
+    .arrow {
+        font-size: 2em;
+        left: 0.2em;
+    }
+
+    .arrowNext {
+        font-size: 2em;
+        right: 0.2em;
+    }
+
+    /* ----- INDICATORS ----- */
+    .vert {
+        font-size: 0.4em;
+    }
+
+    .active {
+        font-size: 0.4em;
+    }
+}
+
+
+
+
+
+/*----- TABLETTE ----*/
+@media screen and (max-width: 768px) and (min-width: 601px) {
+    .carouselContainer {
+        padding: 0em 1em;
+        gap: 1em;
+        height: 37em;
+        padding-bottom: 1em;
+    }
+
+    .leftCarousel {
+        gap: 1.5rem;
+        text-align: center;
+        align-items: center;
+    }
+
+    .divInvest {
+        font-size: 1rem;
+        line-height: 1.75rem;
+    }
+
+    .divFriend {
+        font-size: 2.3rem;
+        line-height: 1.2;
+    }
+
+    .leftCarouselLorem {
+        font-size: 1rem;
+        line-height: 1.7rem;
+    }
+
+    .carouBtn {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+
+    .rightCarousel {        
+        padding-right: 0em;
+        width: 45%;
+        justify-content: center;
+    }
+
+    .divImgCarou img {
+        width: 20em;
+        height: 28em;
+    }
+
+    .texture {
+        height: 28em;
+        width: 20em;
+        top: 5.5em;
+        right: 0;
+    }
+
+    /* ------- ARROWS --------- */
+    .arrow {
+        font-size: 2em;
+    }
+
+    .arrowNext {
+        font-size: 2em;
+    }
+
+    /* ----- INDICATORS ----- */
+    .vert {
+        font-size: 0.4em;
+    }
+
+    .active {
+        font-size: 0.4em;
+    }
+}
+
+
+
+
+
+/*----- LAPTOP ----*/
+@media screen and (max-width: 1024px) and (min-width: 770px) {
+    .carouselContainer {
+        padding: 0em 1em;
+        height: 37em;
+        padding-bottom: 1em;
+    }
+
+    .leftCarousel {
+        gap: 1.7rem;
+        text-align: center;
+        align-items: center;
+    }
+
+    .divInvest {
+        font-size: 1.2rem;
+        line-height: 1.75rem;
+    }
+
+    .divFriend {
+        font-size: 2.7rem;
+        line-height: 1.2;
+    }
+
+    .leftCarouselLorem {
+        font-size: 1.15rem;
+        line-height: 1.7rem;
+    }
+
+    .carouBtn {
+        font-size: 1rem;
+        line-height: 1.6rem;
+    }
+
+    .rightCarousel {        
+        padding-right: 0em;
+        width: 45%;
+        justify-content: center;
+    }
+
+    .divImgCarou img {
+        width: 20em;
+        height: 28em;
+    }
+
+    .texture {
+        height: 28em;
+        width: 20em;
+        top: 5.7em;
+        right: 4em;
+    }
+}

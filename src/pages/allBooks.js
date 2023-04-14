@@ -114,7 +114,7 @@ export default function allBooks({ data }) {
 
                     <div>
                         <p className='font-bold text-xl mb-2'>Author</p>
-                        {/* <div>
+                        <div>
                             <select className='bg-gray-200 rounded-lg pl-1 w-full shadow-lg' name="cars" id="cars">
                                 <option value="All">All</option>
                                 <option value="Book Description">Book Description</option>
@@ -124,8 +124,7 @@ export default function allBooks({ data }) {
                                 <option value="Daniel Diaz">Daniel Diaz</option>
                                 <option value="Fahad">Fahad</option>
                             </select>
-                        </div> */}
-                        <p>BOUTON AUTHORS</p>
+                        </div>
                     </div>
                 </div>
 
